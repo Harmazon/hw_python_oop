@@ -97,8 +97,7 @@ class Swimming(Training):
         return speed
 
     def get_spent_calories_swimming(self) -> float:
-        calories_swimming = (self.speed
-                             + Swimming.coeff_calorie5) * Swimming.coeff_calorie6 * self.weight
+        calories_swimming = (self.speed + Swimming.coeff_calorie5) * Swimming.coeff_calorie6 * self.weight
         return calories_swimming
 
     def get_distance(self) -> float:
