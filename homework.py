@@ -59,10 +59,10 @@ class Training:
 class Running(Training):
     """Тренировка: бег."""
     def get_spent_calories(self) -> float:
-        coef_cal1 = 18
-        coef_cal2 = 20
-        cal_run = (coef_cal1 * self.get_mean_speed()
-                   - coef_cal2) * self.weight / Training.M_IN_KM * self.duration
+        cf_cal1 = 18
+        cf_cal2 = 20
+        cal_run = (cf_cal1 * self.get_mean_speed()
+                   - cf_cal2) * self.weight / Training.M_IN_KM * self.duration
         return cal_run
 
 
