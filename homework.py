@@ -51,7 +51,8 @@ class Training:
 
     def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
-        info = InfoMessage(self.duration(), self.get_distance(), self.get_mean_speed(), self.get_spent_calories())
+        info = InfoMessage(self.duration(), self.get_distance(),
+                           self.get_mean_speed(), self.get_spent_calories())
         return info
 
 
@@ -66,7 +67,8 @@ class Running(Training):
 
 class SportsWalking(Training):
     """Тренировка: спортивная ходьба."""
-    def __init__(self, action: int, duration: float, weight: float, height: float) -> float:
+    def __init__(self, action: int, duration: float,
+                 weight: float, height: float) -> float:
         super().__init__(action, duration, weight)
         self.height = height
         coeff_calorie3 = 0.035
