@@ -74,6 +74,7 @@ class SportsWalking(Training):
         calories_walking = (coeff_calorie3 * self.weight + (self.get_mean_speed()**2 // self.height) * coeff_calorie4 * self.weight) * self.duration
         return calories_walking
 
+
 class Swimming(Training):
     """Тренировка: плавание."""
     LEN_STEP: float = 1.38
@@ -98,6 +99,7 @@ class Swimming(Training):
         distance = self.action * Swimming.LEN_STEP / Training.M_IN_KM
         return distance
 
+
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
     if workout_type == 'SWM':
@@ -107,9 +109,11 @@ def read_package(workout_type: str, data: list) -> Training:
     if workout_type == 'WLK':
         return SportsWalking(*data)
 
+
 def main(training: Training):
     """Главная функция."""
     return (InfoMessage.get_message(training.show_training_info()))
+
 
 if __name__ == '__main__':
     packages = [
