@@ -20,7 +20,6 @@ class InfoMessage:
                 f'Ср. скорость: {self.speed:.3f} км/ч; ' +
                 f'Потрачено ккал: {self.calories:.3f}.')
 
-
 class Training:
     """Базовый класс тренировки."""
     LEN_STEP: float = 0.65
@@ -34,7 +33,6 @@ class Training:
         self.action = action
         self.duration = duration
         self.weight = weight
-        
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
@@ -46,11 +44,11 @@ class Training:
         mean_speed = self.get_distance / self.duration
         return mean_speed
 
-    def get_spent_calories(self) -> float:                                        #WTF
+    def get_spent_calories(self) -> float:
         """Получить количество затраченных калорий."""
         pass
 
-    def show_training_info(self) -> InfoMessage:                                  
+    def show_training_info(self) -> InfoMessage:
         """Вернуть информационное сообщение о выполненной тренировке."""
         info = InfoMessage(self.duration(), self.get_distance(), self.get_mean_speed(), self.get_spent_calories())
         return info
@@ -98,8 +96,6 @@ class Swimming(Training):
         """Получить дистанцию в км."""
         distance = self.action * Swimming.LEN_STEP / Training.M_IN_KM
         return distance
-    
-
 
 def read_package(workout_type: str, data: list) -> Training:
     """Прочитать данные полученные от датчиков."""
@@ -110,11 +106,9 @@ def read_package(workout_type: str, data: list) -> Training:
     if workout_type == 'WLK':
         return SportsWalking(*data)
 
-
 def main(training: Training):
     """Главная функция."""
     return (InfoMessage.get_message(training.show_training_info()))
-
 
 if __name__ == '__main__':
     packages = [
