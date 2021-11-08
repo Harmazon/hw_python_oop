@@ -61,7 +61,8 @@ class Running(Training):
     def get_spent_calories(self) -> float:
         coeff_calorie1 = 18
         coeff_calorie2 = 20
-        calories_running = (coeff_calorie1 * self.get_mean_speed() - coeff_calorie2) * self.weight / Training.M_IN_KM * self.duration
+        calories_running = (coeff_calorie1 * self.get_mean_speed()
+                            - coeff_calorie2) * self.weight / Training.M_IN_KM * self.duration
         return calories_running
 
 
@@ -73,7 +74,8 @@ class SportsWalking(Training):
         self.height = height
         coeff_calorie3 = 0.035
         coeff_calorie4 = 0.029
-        calories_walking = (coeff_calorie3 * self.weight + (self.get_mean_speed()**2 // self.height) * coeff_calorie4 * self.weight) * self.duration
+        calories_walking = (coeff_calorie3 * self.weight + (self.get_mean_speed()**2 // self.height)
+                            * coeff_calorie4 * self.weight) * self.duration
         return calories_walking
 
 
@@ -83,7 +85,8 @@ class Swimming(Training):
     coeff_calorie5 = 1.1
     coeff_calorie6 = 2
 
-    def __init__(self, action: int, duration: float, weight: float, lenght_pool: float, count_pool: float) -> float:
+    def __init__(self, action: int, duration: float, weight: float,
+                 lenght_pool: float, count_pool: float) -> float:
         super().__init__(action, duration, weight)
         self.lenght_pool = lenght_pool
         self.count_pool = count_pool
