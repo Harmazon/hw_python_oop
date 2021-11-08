@@ -15,10 +15,10 @@ class InfoMessage:
 
     def show_message(self) -> str:
         return (f'Тип тренировки: {self.training_type}; '
-                f'Длительность: {self.duration:.3f} ч.; '
-                f'Дистанция: {self.distance:.3f} км; '
-                f'Ср. скорость: {self.speed:.3f} км/ч; '
-                f'Потрачено ккал: {self.calories:.3f}.')
+                + f'Длительность: {self.duration:.3f} ч.; '
+                + f'Дистанция: {self.distance:.3f} км; '
+                + f'Ср. скорость: {self.speed:.3f} км/ч; '
+                + f'Потрачено ккал: {self.calories:.3f}.')
 
 
 class Training:
@@ -83,6 +83,7 @@ class SportsWalking(Training):
 class Swimming(Training):
     """Тренировка: плавание."""
     LEN_STEP: float = 1.38
+    M_IN_KM: int = 1000
     cf_cal5 = 1.1
     cf_cal6 = 2
 
@@ -93,7 +94,7 @@ class Swimming(Training):
         self.count_pool = count_pool
 
     def get_mean_speed_swimming(self) -> float:
-        speed = (self.lenght_pool) * self.count_pool / Training.M_IN_KM / self.duration
+        speed = (self.lenght_pool) * self.count_pool / self.M_IN_KM / self.duration
         return speed
 
     def get_spent_calories_swimming(self) -> float:
@@ -103,7 +104,7 @@ class Swimming(Training):
 
     def get_distance(self) -> float:
         """Получить дистанцию в км."""
-        distance = self.action * Swimming.LEN_STEP / Training.M_IN_KM
+        distance = self.action * self.LEN_STEP / self.M_IN_KM
         return distance
 
 
